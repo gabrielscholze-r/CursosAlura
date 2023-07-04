@@ -7,7 +7,7 @@
 
 using namespace std;
 
-string p = "ABACAXI";
+string p;
 map<char, bool> chutou;
 vector<string> palavras;
 vector<char> chutes_errados;
@@ -76,10 +76,12 @@ bool nao_enforcou(int tentativas)
 }
 
 void define_palavra()
+
 {
     srand(time(NULL));
     p = palavras[rand() % palavras.size()];
 }
+
 vector<string> le_palavra()
 {
     vector<string> novas_palavras;
@@ -99,6 +101,7 @@ vector<string> le_palavra()
     arquivo.close();
     return novas_palavras;
 }
+
 void salva_arquivo(vector<string> Nlista)
 {
     ofstream arquivo;
@@ -113,6 +116,7 @@ void salva_arquivo(vector<string> Nlista)
         arquivo.close();
     }
 }
+
 void adiciona_palavra(string nova)
 {
     vector<string> lista = le_palavra();
