@@ -1,1 +1,2 @@
-void sorteia_palavra();
+#include <string>
+std::string sorteia_palavra();
