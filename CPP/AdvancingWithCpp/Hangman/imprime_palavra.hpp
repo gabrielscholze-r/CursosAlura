@@ -1,4 +1,7 @@
 #include <map>
 #include <string>
 
-void imprime_palavra(std::string &palavra_secreta, const std::map<char, bool> &chutou);
+namespace Forca
+{
+    void imprime_palavra(const std::string &palavra_secreta, std::map<char, bool> &chutou);
+}

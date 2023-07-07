@@ -1,13 +1,16 @@
 #include "nao_acertou.hpp"
 
-bool nao_acertou(std::string &palavra_secreta, const std::map<char, bool> &chutou)
+namespace Forca
 {
-    for (char letra : palavra_secreta)
+    bool nao_acertou(std::string &palavra_secreta, const std::map<char, bool> &chutou)
     {
-        if (chutou.find(letra) == chutou.end() || !chutou.at(letra))
+        for (char letra : palavra_secreta)
         {
-            return true;
+            if (chutou.find(letra) == chutou.end() || !chutou.at(letra))
+            {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
 }

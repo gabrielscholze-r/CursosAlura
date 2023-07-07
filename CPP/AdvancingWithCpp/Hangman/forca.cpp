@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <vector>
+#include <array>
 #include "letra_existe.hpp"
 #include "imprime_cabecalho.hpp"
 #include "le_arquivo.hpp"
@@ -14,38 +14,46 @@
 
 using namespace std;
 
-string palavra_secreta; 
-map<char, bool> chutou;
-vector<char> chutes_errados;
+static string palavra_secreta;
+static map<char, bool> chutou;
+static array<char, 5> chutes_errados;
+static int numero_chutes = 0;
 
-int main () {
+int main()
+{
     imprime_cabecalho();
 
-    palavra_secreta=sorteia_palavra();
+    palavra_secreta = Forca::sorteia_palavra();
 
-    while(nao_acertou(palavra_secreta, chutou) && chutes_errados.size() < 5){
-        imprime_erros(chutes_errados);
+    while (Forca::nao_acertou(palavra_secreta, chutou) && numero_chutes < 5)
+    {
+        Forca::imprime_erros(chutes_errados);
 
-        imprime_palavra(palavra_secreta, chutou);
+        Forca::imprime_palavra(palavra_secreta, chutou);
 
-        chuta(chutou, chutes_errados, palavra_secreta);
+        Forca::chuta(chutou, chutes_errados, palavra_secreta, numero_chutes);
+
+        numero_chutes++;
     }
 
     cout << "Fim de jogo!" << endl;
     cout << "A palavra secreta era: " << palavra_secreta << endl;
-    if(nao_acertou(palavra_secreta, chutou)){
-        cout << "Você perdeu! Tente novamente!" << endl;
+    if (Forca::nao_acertou(palavra_secreta, chutou))
+    {
+        cout << "Voce perdeu! Tente novamente!" << endl;
     }
-    else{
-        cout << "ParabEns! Você acertou a palavra secreta!" << endl;
+    else
+    {
+        cout << "Parabens! Você acertou a palavra secreta!" << endl;
 
-        cout << "VocE deseja adicionar uma nova palavra ao banco? (S/N) ";
+        cout << "Voce deseja adicionar uma nova palavra ao banco? (S/N) ";
         char resposta;
         cin >> resposta;
-        if(resposta == 'S'){
-            adiciona_palavra();
+        if (resposta == 'S')
+        {
+            Forca::adiciona_palavra();
         }
     }
-    
+
     cin.get();
 }

@@ -1,2 +1,5 @@
 #include <string>
-bool letra_existe(char chute, std::string palavra_secreta);
+namespace Forca
+{
+    bool letra_existe(const char &chute, const std::string &palavra_secreta);
+}
