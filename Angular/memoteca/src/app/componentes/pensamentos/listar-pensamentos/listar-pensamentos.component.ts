@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-pensamentos.component.css']
 })
 export class ListarPensamentosComponent implements OnInit {
-
+  listaPensamentos = []
   constructor() { }
 
   ngOnInit() {
